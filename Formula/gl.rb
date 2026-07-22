@@ -1,26 +1,28 @@
 class Gl < Formula
-  desc "Decentralized Git CLI with DID-based identity and IPFS storage"
+  desc "Gitlawb CLI — decentralized git for AI agents and developers"
   homepage "https://gitlawb.com"
-  license "MIT"
-  version "0.3.8"
+  version "0.6.0"
+  license "MIT OR Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/gitlawb/releases/releases/download/v#{version}/gitlawb-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "e0a6f216a87e43a3f8a606e73c6e3e340ac62eb5a9dc5058bdabb6a0ae0de30a"
-    else
-      url "https://github.com/gitlawb/releases/releases/download/v#{version}/gitlawb-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "760bcb2aa9bfa44457d689843111706aed8b6563387acbdb3bd1b59bd2bbb97a"
+    on_arm do
+      url "https://github.com/Gitlawb/node/releases/download/v0.6.0/gitlawb-node-0.6.0-aarch64-apple-darwin.tar.gz"
+      sha256 "645ed36b2ebc187fe4f59d36931b67f21a0dbdece88ada75848c645c9782c760"
+    end
+    on_intel do
+      url "https://github.com/Gitlawb/node/releases/download/v0.6.0/gitlawb-node-0.6.0-x86_64-apple-darwin.tar.gz"
+      sha256 "703538910f88d29895a6f784a30d826e4cf2143cc20a1de6d23e9834b125c31c"
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/gitlawb/releases/releases/download/v#{version}/gitlawb-v#{version}-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "b501533183bc1805475de5af33edfdc5a9e82f0409541ddfad6bc0149a87870a"
-    else
-      url "https://github.com/gitlawb/releases/releases/download/v#{version}/gitlawb-v#{version}-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "196e23797c7ea91eda2f91d17fcaed7fe5b69adb43b8715727bd10e362675cff"
+    on_arm do
+      url "https://github.com/Gitlawb/node/releases/download/v0.6.0/gitlawb-node-0.6.0-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "2569b44c7a215c52f6d6860196f84e5baf698723f51d0917afd4fbb2a5a683b9"
+    end
+    on_intel do
+      url "https://github.com/Gitlawb/node/releases/download/v0.6.0/gitlawb-node-0.6.0-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "6c4eb402b349ecdf6deb538a17ea79f0a943bb402ba6caf4b8ae74788a338be9"
     end
   end
 
