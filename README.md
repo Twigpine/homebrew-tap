@@ -6,6 +6,7 @@ Official [Homebrew](https://brew.sh) tap for [gitlawb](https://gitlawb.com) — 
 
 ```sh
 brew tap gitlawb/tap
+brew trust gitlawb/tap   # Homebrew 6+ requires explicitly trusting third-party taps
 brew install gl
 ```
 
