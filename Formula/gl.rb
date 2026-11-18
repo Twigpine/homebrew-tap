@@ -1,46 +1,42 @@
 class Gl < Formula
-  desc "Gitlawb CLI — decentralized git for AI agents and developers"
-  homepage "https://gitlawb.com"
-  version "0.7.1"
+  desc "Twigpine CLI — decentralized git for AI agents and developers"
+  homepage "https://twigpine.com"
+  version "0.8.1"
   license "MIT OR Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/Gitlawb/node/releases/download/v0.7.1/gitlawb-node-0.7.1-aarch64-apple-darwin.tar.gz"
-      sha256 "ebc0b453ce5c0e88154cc0d274535c461f30edbcab3c8fe9ab79d02d7f890247"
+      url "https://github.com/Twigpine/node/releases/download/v0.8.1/twigpine-node-0.8.1-aarch64-apple-darwin.tar.gz"
+      sha256 "4ad8d2e09b279b603e298d17de52cfc87eaf559715b26c2ac09b5be4b829338b"
     end
     on_intel do
-      url "https://github.com/Gitlawb/node/releases/download/v0.7.1/gitlawb-node-0.7.1-x86_64-apple-darwin.tar.gz"
-      sha256 "699da7c2abf3f360a22fa4e57e9558231530e544e2d4c5bbaa62be5abe79bbcf"
+      url "https://github.com/Twigpine/node/releases/download/v0.8.1/twigpine-node-0.8.1-x86_64-apple-darwin.tar.gz"
+      sha256 "79fe903f2181a564cc9f6f5f7129669f4f0ca312a2166d23fc8fe2403db21822"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Gitlawb/node/releases/download/v0.7.1/gitlawb-node-0.7.1-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "63210ab5066ce764857875d08d2a38654b17e2d940dac041bde107d4308cfc46"
+      url "https://github.com/Twigpine/node/releases/download/v0.8.1/twigpine-node-0.8.1-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "f12fa455f419a2c9fe027ba9a9939362edc6ced57a1eb3356a62fba2feba3360"
     end
     on_intel do
-      url "https://github.com/Gitlawb/node/releases/download/v0.7.1/gitlawb-node-0.7.1-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "9de100fba5bacecf48ef0a3fdfd10df6d45c51a01d3f6546ae99b014ab0eb0f6"
+      url "https://github.com/Twigpine/node/releases/download/v0.8.1/twigpine-node-0.8.1-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "ff611d5dc75af8f09c677b53f7a3ea32638f08999b6a66c980a2766d19567861"
     end
   end
 
   def install
-    bin.install "gl"
-    bin.install "git-remote-gitlawb"
-  end
-
-  def caveats
-    <<~CAVEATS
-      oh-my-zsh's git plugin aliases gl='git pull', which shadows this
-      binary in interactive shells. If `gl` prints "fatal: not a git
-      repository", run:
-        echo 'unalias gl 2>/dev/null' >> ~/.zshrc && source ~/.zshrc
-    CAVEATS
+    bin.install "twigpine"
+    bin.install "git-remote-twigpine"
+    # The short form, and the names used before the rename: existing
+    # clones and scripts still call them.
+    bin.install_symlink bin/"twigpine" => "twig"
+    bin.install_symlink bin/"twigpine" => "gl"
+    bin.install_symlink bin/"git-remote-twigpine" => "git-remote-gitlawb"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/gl --version")
+    assert_match version.to_s, shell_output("#{bin}/twigpine --version")
   end
 end
